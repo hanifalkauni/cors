@@ -1,0 +1,82 @@
+{
+  "name": "corsproxy",
+  "description": "A CORS headers proxy service that allows you to access resources from other websites, Bypass or Unblock sites.",
+  "version": "0.0.1",
+  "author": "Muhammad Nur Fuad (illvart)",
+  "private": true,
+  "license": "MIT",
+  "main": "scripts/server.js",
+  "homepage": "https://github.com/illvart/cors",
+  "repository": "git+https://github.com/illvart/cors.git",
+  "keywords": [
+    "node",
+    "express",
+    "cors",
+    "proxy"
+  ],
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "mithril": "^2.0.4",
+    "netlify-lambda": "^1.6.3",
+    "request": "^2.88.0",
+    "serverless-http": "^2.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.2",
+    "@babel/plugin-syntax-dynamic-import": "^7.7.4",
+    "@babel/plugin-transform-runtime": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "babel-loader": "^8.0.6",
+    "babel-minify": "^0.5.1",
+    "brotli-webpack-plugin": "^1.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "compression-webpack-plugin": "^3.0.0",
+    "concurrently": "^5.0.0",
+    "copy-webpack-plugin": "^5.0.5",
+    "core-js": "^3.4.2",
+    "css-declaration-sorter": "^4.0.1",
+    "css-loader": "^3.2.0",
+    "cssnano": "^4.1.10",
+    "file-loader": "^4.3.0",
+    "glob": "^7.1.5",
+    "html-webpack-plugin": "^3.2.0",
+    "http-proxy-middleware": "^0.20.0",
+    "json-minify": "^1.0.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "nodemon": "^2.0.1",
+    "optimize-css-assets-webpack-plugin": "^5.0.2",
+    "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.7.0",
+    "purgecss-webpack-plugin": "^1.6.0",
+    "script-ext-html-webpack-plugin": "^2.1.4",
+    "style-loader": "^1.0.0",
+    "terser-webpack-plugin": "^2.2.1",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0",
+    "workbox-webpack-plugin": "^4.3.1"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 0.25%",
+    "IE > 10",
+    "iOS >= 9",
+    "Firefox ESR"
+  ],
+  "config": {
+    "output": "public",
+    "port": "6661"
+  },
+  "scripts": {
+    "minify:json": "json-minify public/site.webmanifest > public/site.webmanifest",
+    "minify:sw": "minify public/sw.js --outFile public/sw.js",
+    "build": "rm -rf public && webpack --mode production --config scripts/webpack.prod.js && yarn run minify:json && yarn run minify:sw",
+    "start": "yarn run build && node scripts/server.js",
+    "client": "rm -rf public && webpack-dev-server --mode development --config scripts/webpack.dev.js",
+    "server": "nodemon scripts/server.js",
+    "dev": "concurrently \"yarn run server\" \"yarn run client\""
+  }
+}

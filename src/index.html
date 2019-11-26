@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html
+  dir="<%= htmlWebpackPlugin.options.dir %>"
+  lang="<%= htmlWebpackPlugin.options.lang %>"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <meta
+      name="description"
+      content="<%= htmlWebpackPlugin.options.description %>"
+    />
+    <link rel="canonical" href="<%= htmlWebpackPlugin.options.url %>" />
+    <meta name="robots" content="index,follow" />
+
+    <!-- Open Graph -->
+    <meta
+      property="og:title"
+      content="<%= htmlWebpackPlugin.options.shortTitle %>"
+    />
+    <meta
+      property="og:site_name"
+      content="<%= htmlWebpackPlugin.options.shortTitle %>"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= htmlWebpackPlugin.options.url %>" />
+    <meta
+      property="og:description"
+      content="<%= htmlWebpackPlugin.options.description %>"
+    />
+    <meta
+      property="og:locale"
+      content="<%= htmlWebpackPlugin.options.locale %>"
+    />
+    <meta
+      property="og:image"
+      content="<%= htmlWebpackPlugin.options.url %>/img/illvart-cors.png"
+    />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:site"
+      content="<%= htmlWebpackPlugin.options.twitter %>"
+    />
+    <meta
+      name="twitter:creator"
+      content="<%= htmlWebpackPlugin.options.twitter %>"
+    />
+    <meta name="twitter:url" content="<%= htmlWebpackPlugin.options.url %>" />
+    <meta
+      name="twitter:title"
+      content="<%= htmlWebpackPlugin.options.shortTitle %>"
+    />
+    <meta
+      name="twitter:description"
+      content="<%= htmlWebpackPlugin.options.description %>"
+    />
+    <meta
+      name="twitter:image"
+      content="<%= htmlWebpackPlugin.options.url %>/img/illvart-cors.png"
+    />
+    <!-- Disable google translate: google search engine -->
+    <meta name="google" content="notranslate" />
+    <!-- Manifest -->
+    <link rel="manifest" href="/site.webmanifest" />
+    <!-- iOS Web Applications -->
+    <meta
+      name="apple-mobile-web-app-title"
+      content="<%= htmlWebpackPlugin.options.shortTitle %>"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link href="/img/logo/apple-touch-icon.png" rel="apple-touch-icon" />
+    <link href="/img/logo/favicon32.png" rel="shortcut icon" />
+    <meta content="#607d8b" name="theme-color" />
+    <!-- Preconnection -->
+    <link rel="preconnect" href="https://www.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link
+      rel="preconnect"
+      href="https://www.google-analytics.com"
+      crossorigin
+    />
+    <style>/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}[hidden],template{display:none}</style>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=<%= htmlWebpackPlugin.options.cdn.font %>"
+    />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"<%= htmlWebpackPlugin.options.shortTitle %>","url":"<%= htmlWebpackPlugin.options.url %>","sameAs":["<%= htmlWebpackPlugin.options.social.twitter %>","<%= htmlWebpackPlugin.options.social.facebook %>","<%= htmlWebpackPlugin.options.social.instagram %>"]}</script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga("create", "<%= htmlWebpackPlugin.options.googleAnalytics %>", "auto");
+      ga("send", "pageview");
+    </script>
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
+    <%= htmlWebpackPlugin.options.sw %>
+  </body>
+</html>

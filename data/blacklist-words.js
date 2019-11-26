@@ -1,0 +1,1 @@
+module.exports = "porn|sexy|bokep";

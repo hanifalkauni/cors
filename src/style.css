@@ -1,0 +1,238 @@
+* {
+  box-sizing: border-box;
+}
+
+div,
+header,
+footer {
+  display: block;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  font: 400 16px / 1.5 "Roboto", sans-serif;
+  background: #607d8b;
+  color: #fff;
+  height: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  margin: 0;
+  overflow-wrap: break-word;
+  overflow-x: hidden;
+  word-wrap: break-word;
+}
+
+a {
+  color: pink;
+}
+
+h1 {
+  font-size: 44px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin: 0;
+}
+
+h1 > a {
+  text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 34px;
+  }
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+#content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex: 4;
+  width: 100%;
+  padding: 24px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 24px;
+  text-align: center;
+}
+
+header > p {
+  margin: 8px 0 0;
+  max-width: 320px;
+  letter-spacing: 1px;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#alert {
+  visibility: hidden;
+  opacity: 0;
+  transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+  z-index: 1;
+}
+
+#alert.active {
+  margin-bottom: 24px;
+  opacity: 1;
+  visibility: visible;
+}
+
+#alert .alert-content {
+  background: pink;
+  color: #37474f;
+  padding: 8px;
+  border-radius: 4px;
+  display: none;
+  z-index: 1;
+}
+
+#box {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  padding: 24px;
+  max-width: 340px;
+  border-radius: 4px;
+  background: #fff;
+  color: #37474f;
+  box-shadow: 0 3px 3px -2px rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.14),
+    0 1px 8px 0 rgba(0, 0, 0, 0.12);
+  z-index: 2;
+}
+
+#box .info {
+  margin: 0 0 16px;
+}
+
+#box .settings {
+  width: 100%;
+  margin: 0 0 16px;
+}
+
+input[type="text"] {
+  font-family: "Roboto", sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  font-weight: 400;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  outline: 0;
+  background: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  z-index: 1;
+}
+
+input[type="text"]:hover,
+input[type="text"]:focus {
+  border: 1px solid pink;
+}
+
+#input {
+  padding: 12px;
+  margin-bottom: 24px;
+}
+
+#output {
+  max-width: 200px;
+  padding: 6px;
+  margin-bottom: 24px;
+  display: none;
+}
+
+input[type="checkbox"],
+label {
+  cursor: pointer;
+  vertical-align: middle;
+  user-select: none;
+}
+
+label {
+  margin: 0 6px;
+}
+
+button {
+  font-family: "Roboto", sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1.8px;
+  text-decoration: none;
+  text-transform: uppercase;
+  background: pink;
+  color: #37474f;
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  min-width: 64px;
+  border: 0;
+  outline: 0;
+  padding: 6px 16px;
+  cursor: pointer;
+  line-height: inherit;
+  user-select: none;
+  -webkit-appearance: none;
+  overflow: visible;
+  vertical-align: middle;
+  border-radius: 18px;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:hover,
+button:focus {
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14),
+    0 1px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+button:active {
+  background: #607d8b;
+  color: #fff;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+footer {
+  text-align: center;
+  max-width: 380px;
+  padding: 24px;
+}
+
+footer > a {
+  font-weight: 500;
+  margin: 0 6px;
+}
