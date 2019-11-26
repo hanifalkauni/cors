@@ -50,7 +50,6 @@
     "optimize-css-assets-webpack-plugin": "^5.0.2",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.7.0",
-    "purgecss-webpack-plugin": "^1.6.0",
     "script-ext-html-webpack-plugin": "^2.1.4",
     "style-loader": "^1.0.0",
     "terser-webpack-plugin": "^2.2.1",
@@ -71,7 +70,7 @@
     "port": "6661"
   },
   "scripts": {
-    "minify:json": "json-minify public/site.webmanifest > public/site.webmanifest",
+    "minify:json": "json-minify src/site.webmanifest > public/site.webmanifest",
     "minify:sw": "minify public/sw.js --outFile public/sw.js",
     "build": "rm -rf public && webpack --mode production --config scripts/webpack.prod.js && yarn run minify:json && yarn run minify:sw",
     "start": "yarn run build && node scripts/server.js",

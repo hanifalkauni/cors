@@ -20,7 +20,6 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-const PurgecssPlugin = require("purgecss-webpack-plugin");
 const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
 const { InjectManifest } = require("workbox-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
@@ -185,11 +184,6 @@ const plugins = [
   new MiniCssExtractPlugin({
     filename: "style.[hash:8].bundle.css",
     chunkFilename: "style.[hash:8].chunk.css"
-  }),
-  new PurgecssPlugin({
-    paths: glob.sync(path.resolve(__dirname, `${INPUT}/**/*`), {
-      nodir: true
-    })
   }),
   new InjectManifest({
     importWorkboxFrom: "local",
