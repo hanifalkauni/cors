@@ -2,7 +2,7 @@ module.exports = {
   dir: "ltr",
   lang: "en",
   locale: "en_US",
-  url: "https://cors.illvart.now.sh",
+  url: "https://cors.illvart.com",
   title: "CORSProxy – Headers proxy service",
   shortTitle: "CORSProxy",
   description:
