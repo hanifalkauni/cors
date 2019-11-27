@@ -46,6 +46,12 @@ yarn server # or npm run server
 
 ![Screenshot](doc/cors.illvart.com_screenshot.png)
 
+## ✍️ Task Lists
+
+- [x] Fix bug URL's redirect
+- [x] Add Prettier
+- [x] Add ESLint
+
 ## ❤️ Show your support
 
 Give a ⭐️ this repository if this project helped you!
