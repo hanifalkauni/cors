@@ -36,7 +36,11 @@ yarn server # or npm run server
 ```
 ```http://localhost:8080``` (static) - webpack output
 
-```http://localhost:1111``` (server) - webpack output + express
+```http://localhost:2121``` (server) - webpack output + express
+
+## 🖼️ Screenshot
+
+![Screenshot](doc/cors.illvart.com_screenshot.png)
 
 ## ❤️ Show your support
 

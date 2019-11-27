@@ -62,7 +62,7 @@ const Config = {
     },*/
     minimizer: [
       new TerserPlugin({
-        parallel: true,
+        parallel: false, // false because to avoid cPanel Error: spawn ENOMEM
         cache: true,
         terserOptions: {
           output: {
@@ -158,18 +158,18 @@ const plugins = [
     minify: {
       html5: true,
       useShortDoctype: true,
-      decodeEntities: true,
+      decodeEntities: true, // true because to avoid decode Email
       minifyCSS: true,
       minifyJS: true,
       collapseBooleanAttributes: true,
-      collapseWhitespace: true,
+      collapseWhitespace: true, // true for minify
       preventAttributesEscaping: false,
-      removeAttributeQuotes: true,
+      removeAttributeQuotes: false,
       removeComments: true,
       removeScriptTypeAttributes: true,
       removeStyleLinkTypeAttributes: true,
       removeEmptyAttributes: true,
-      removeOptionalTags: true,
+      removeOptionalTags: false, // false because to avoid Google Search Console verify
       removeTagWhitespace: false,
       sortAttributes: true,
       sortClassName: false,
