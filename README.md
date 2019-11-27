@@ -34,8 +34,9 @@ yarn build # or npm run build
 # Start production server (after build)
 yarn server # or npm run server
 ```
-http://localhost:8080 (static) - webpack output
-http://localhost:1111 (server) - webpack output + express
+```http://localhost:8080``` (static) - webpack output
+
+```http://localhost:1111``` (server) - webpack output + express
 
 ## ❤️ Show your support
 
