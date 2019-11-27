@@ -48,9 +48,9 @@ yarn server # or npm run server
 
 ## ✍️ Task Lists
 
-- [x] Fix bug URL's redirect
-- [x] Add Prettier
-- [x] Add ESLint
+- [ ] Fix bug URL's redirect
+- [ ] Add Prettier
+- [ ] Add ESLint
 
 ## ❤️ Show your support
 
