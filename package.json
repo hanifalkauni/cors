@@ -67,15 +67,21 @@
   ],
   "config": {
     "output": "public",
-    "port": "6661"
+    "port": {
+      "static": "8080",
+      "server": "1111"
+    }
   },
   "scripts": {
     "minify:json": "json-minify src/site.webmanifest > public/site.webmanifest",
     "minify:sw": "minify public/sw.js --outFile public/sw.js",
-    "build": "rm -rf public && webpack --mode production --config scripts/webpack.prod.js && yarn run minify:json && yarn run minify:sw",
-    "start": "yarn run build && node scripts/server.js",
-    "client": "rm -rf public && webpack-dev-server --mode development --config scripts/webpack.dev.js",
-    "server": "nodemon scripts/server.js",
-    "dev": "concurrently \"yarn run server\" \"yarn run client\""
+    "webpack": "webpack",
+    "webpack:prod": "webpack --mode production --config scripts/webpack.prod.js",
+    "webpack:dev": "webpack-dev-server --mode development --config scripts/webpack.dev.js",
+    "build": "yarn run webpack:prod && yarn run minify:json && yarn run minify:sw",
+    "server": "node scripts/server.js",
+    "start": "yarn run build && yarn run server",
+    "monitor": "nodemon server",
+    "dev": "concurrently \"yarn run monitor\" \"yarn run webpack:dev\""
   }
 }

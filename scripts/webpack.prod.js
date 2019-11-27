@@ -36,8 +36,6 @@ const pkg = JSON.parse(fs.readFileSync("./package.json", "utf8"));
 const INPUT = `./src`;
 // OUTPUT
 const OUTPUT = pkg.config.output;
-// PORT
-const PORT = pkg.config.port;
 
 const Config = {
   mode: "production",

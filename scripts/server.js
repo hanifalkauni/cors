@@ -14,7 +14,6 @@
 const fs = require("fs");
 const path = require("path");
 const express = require("express");
-const serverless = require("serverless-http");
 const request = require("request");
 const proxy = require("http-proxy-middleware");
 const bodyParser = require("body-parser");
@@ -26,7 +25,6 @@ const dev = process.env.NODE_ENV !== "production";
 
 // Express
 const app = express();
-const router = express.Router();
 
 // package.json config
 const pkg = JSON.parse(fs.readFileSync("./package.json", "utf8"));
@@ -168,10 +166,10 @@ app.get("*", (req, res, next) => {
   CORSProxy(req, res, next);
 });
 
-app.listen(PORT, () => {
+app.listen(PORT.server, () => {
   console.log(`Starting CORSProxy server, serving at ${OUTPUT}/`);
   console.log("Available on:");
-  console.log(`  http://localhost:${PORT}`);
-  console.log(`  http://127.0.0.1:${PORT}`);
+  console.log(`  http://localhost:${PORT.server}`);
+  console.log(`  http://127.0.0.1:${PORT.server}`);
   console.log("Press Ctrl+C to quit.");
 });

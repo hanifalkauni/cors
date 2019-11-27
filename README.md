@@ -10,6 +10,7 @@
 </p>
 
 ## 👨‍💻 Quick Start
+Please read the others commands in the ```package.json```.
 
 ```sh
 # Clone the repository
@@ -19,17 +20,22 @@ git clone https://github.com/illvart/cors.git
 cd cors
 
 # Install dependencies
-yarn (or npm install)
+yarn # or npm install
 
-# Start development server
-yarn dev (or npm run dev)
+# Start development server (server, build, server)
+yarn dev # or npm run dev
 
-# Build for production
-yarn build (or npm run build)
+# Start production server (build, server)
+yarn start # or npm start
 
-# Start production server
-yarn start (or npm start)
+# Build production (without server)
+yarn build # or npm run build
+
+# Start production server (after build)
+yarn server # or npm run server
 ```
+http://localhost:8080 (static) - webpack output
+http://localhost:1111 (server) - webpack output + express
 
 ## ❤️ Show your support
 

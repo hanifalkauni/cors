@@ -39,7 +39,7 @@ const Config = {
   devtool: "source-map",
   stats: "normal",
   devServer: {
-    port: 8080,
+    port: PORT.static,
     open: false,
     liveReload: false,
     compress: true,
@@ -48,7 +48,7 @@ const Config = {
     writeToDisk: true,
     hot: true,
     proxy: {
-      "/api": `http://localhost:${PORT}`
+      "/api": `http://localhost:${PORT.server}`
     }
   },
   optimization: {
