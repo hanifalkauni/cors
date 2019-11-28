@@ -1,1 +1,1 @@
-module.exports = "porn|sexy|bokep";
+module.exports = "bokep"; // porn|bokep

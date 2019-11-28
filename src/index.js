@@ -18,7 +18,10 @@ const win = window;
 const doc = win.document;
 
 const $ = id => doc.getElementById(id);
-const noProtocol = url => url.startsWith("http://") || url.startsWith("https://");
+const noProtocol = url =>
+  url.startsWith("http://") ||
+  url.startsWith("https://") ||
+  url.startsWith("ftp://");
 
 const App = (props, state) => [
   m(
@@ -27,10 +30,7 @@ const App = (props, state) => [
     m(
       "header",
       m("h1", m("a", { href: "/", title: "CORSProxy" }, "CORSProxy")),
-      m(
-        "p",
-        "Access resources from other websites, bypass or unblock sites"
-      )
+      m("p", "Access resources from other websites, bypass or unblock sites")
     ),
     m("main", [
       m("div", { id: "alert" }, m("div", { class: "alert-content" })),
@@ -45,30 +45,53 @@ const App = (props, state) => [
         m(
           "div",
           { className: "settings" },
-          m("input", { type: "checkbox", id: "encode-url" }),
-          m("label", { id: "state", for: "encode-url" }, [
-            "Encode URL (",
-            m("span", "false"),
-            ")"
-          ])
+          m(
+            "div",
+            m("input", { type: "checkbox", id: "encode-url" }),
+            m("label", { id: "encode-url-label", for: "encode-url" }, [
+              "Encode URL (",
+              m("span", "off"),
+              ")"
+            ])
+          ),
+          m(
+            "div",
+            m("input", { type: "checkbox", id: "new-tab" }),
+            m("label", { id: "new-tab-label", for: "new-tab" }, [
+              "Open URL in New Tab (",
+              m("span", "off"),
+              ")"
+            ])
+          )
         ),
-        m("input", {
-          id: "input",
-          name: "url",
-          type: "text",
-          maxlength: "100",
-          placeholder: "Enter URL",
-          autocomplete: "off"
-        }),
+        m(
+          "div",
+          { className: "input-box" },
+          m("input", {
+            id: "input",
+            type: "text",
+            name: "url",
+            placeholder: "Enter URL"
+          }),
+          m(
+            "button",
+            { type: "button", id: "clear" },
+            m(
+              "svg",
+              { viewBox: "0 0 24 24", xmlns: "http://www.w3.org/2000/svg" },
+              m("path", {
+                d:
+                  "M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
+              })
+            )
+          )
+        ),
         m("input", { type: "text", id: "output", autocomplete: "off" }),
         m(
           "button",
           {
             type: "button",
-            id: "get-url",
-            onclick() {
-              //count++;
-            }
+            id: "get-url"
           },
           "Get URL"
         )
@@ -102,8 +125,11 @@ const input = $("input");
 const output = $("output");
 const get = $("get-url");
 const encodeURL = $("encode-url");
-const encodeURLstate = $("state").querySelector("span");
+const encodeURLLabel = $("encode-url-label").querySelector("span");
+const newTab = $("new-tab");
+const newTabLabel = $("new-tab-label").querySelector("span");
 const box = $("box");
+const clear = $("clear");
 
 output.readOnly = true;
 const encode = encodeURIComponent;
@@ -116,27 +142,36 @@ const why = content => {
   if (alert.className === "") {
     alert.className = "active";
     alertContent.style.display = "block";
-  } else {
-    alert.className = "";
-    alertContent.style.display = "none";
   }
 };
-
 encodeURL.addEventListener(
   "click",
   event => {
     const target = event.target;
     if (target.checked) {
       target.checked = true;
-      encodeURLstate.innerText = "true";
+      encodeURLLabel.innerText = "on";
     } else {
       target.checked = false;
-      encodeURLstate.innerText = "false";
+      encodeURLLabel.innerText = "off";
     }
   },
   false
 );
-
+newTab.addEventListener(
+  "click",
+  event => {
+    const target = event.target;
+    if (target.checked) {
+      target.checked = true;
+      newTabLabel.innerText = "on";
+    } else {
+      target.checked = false;
+      newTabLabel.innerText = "off";
+    }
+  },
+  false
+);
 get.addEventListener(
   "click",
   event => {
@@ -159,27 +194,57 @@ get.addEventListener(
       } else {
         output.value = results;
         output.style.display = "block";
+        output.focus();
+        output.select();
+        why(`<strong>URL</strong> copied!`);
+        if (!doc.execCommand) {
+          return;
+        }
+        doc.execCommand("copy");
+        newTab.checked ? win.open(results) : null;
       }
-      output.focus();
-      output.select();
-      if (!doc.execCommand) {
-        return;
-      }
-      doc.execCommand("copy");
-      output.readOnly = false;
     }
   },
   false
 );
-
 output.addEventListener(
   "click",
   () => {
-    output.select();
-    if (!doc.execCommand) {
-      return;
+    if (input.value === "") {
+      return false;
+    } else {
+      output.select();
+      why(`<strong>URL</strong> copied!`);
+      if (!doc.execCommand) {
+        return;
+      }
+      doc.execCommand("copy");
+      return true;
     }
-    doc.execCommand("copy");
+  },
+  false
+);
+input.addEventListener(
+  "input",
+  () => {
+    if (input.value === "") {
+      clear.style.display = "none";
+    } else {
+      clear.style.display = "inline";
+    }
+  },
+  false
+);
+clear.addEventListener(
+  "click",
+  () => {
+    if (input.value === "") {
+      return false;
+    } else {
+      input.value = "";
+      clear.style.display = "none";
+      return true;
+    }
   },
   false
 );

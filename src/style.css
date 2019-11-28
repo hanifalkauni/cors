@@ -106,6 +106,8 @@ main {
   color: #37474f;
   padding: 8px;
   border-radius: 4px;
+  max-width: 340px;
+  text-align: center;
   display: none;
   z-index: 1;
 }
@@ -159,8 +161,17 @@ input[type="text"]:focus {
   border: 1px solid pink;
 }
 
+.input-box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
 #input {
-  padding: 12px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 12px;
+  padding-right: 38px;
   margin-bottom: 24px;
 }
 
@@ -224,6 +235,34 @@ button:active {
   color: #fff;
   box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
     0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+#clear {
+  position: absolute;
+  top: 5px;
+  right: 4px;
+  outline: 0;
+  border: 0;
+  background: none !important;
+  box-shadow: none !important;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  z-index: 1;
+  display: none;
+}
+#clear > svg {
+  fill: #212121;
+  opacity: .6;
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  z-index: -1;
+}
+#clear:hover > svg {
+  opacity: 1;
 }
 
 footer {
