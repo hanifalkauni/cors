@@ -20,6 +20,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const compression = require("compression");
 const useragent = require("express-useragent");
+//const cheerio = require("cheerio");
 const logsDev = require("./logsDev");
 const blacklistUrl = require("../data/blacklist-url");
 const blacklistWords = require("../data/blacklist-words");
@@ -161,7 +162,7 @@ app.get("/", (req, res, next) => {
 });
 app.get("/index.html", (req, res, next) => {
   res.set("Content-Type", "text/html; charset=utf-8");
-  res.set("Content-Type", "IE=Edge");
+  res.set("X-UA-Compatible", "IE=Edge");
   next();
 });
 app.disable("x-powered-by");
@@ -176,7 +177,7 @@ const staticOptions = {
     res.set("X-DNS-Prefetch-Control", "on");
     res.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
     res.set(
-      "Content-Security-Policy-Report-Only",
+      "Content-Security-Policy",
       "report-uri https://illvart.report-uri.com/r/d/ct/reportOnly"
     );
     res.set("X-Frame-Options", "DENY");

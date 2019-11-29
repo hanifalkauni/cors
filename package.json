@@ -16,6 +16,7 @@
   ],
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cheerio": "^1.0.0-rc.3",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
     "express": "^4.16.4",
@@ -77,10 +78,10 @@
     "webpack": "webpack",
     "webpack:prod": "webpack --mode production --config scripts/webpack.prod.js",
     "webpack:dev": "webpack-dev-server --mode development --config scripts/webpack.dev.js",
-    "build": "yarn run webpack:prod && yarn run minify:json && yarn run minify:sw",
+    "build": "npm run webpack:prod && npm run minify:json && npm run minify:sw",
     "server": "NODE_ENV=production node scripts/server.js",
-    "start": "yarn run build && yarn run server",
+    "start": "npm run build && npm run server",
     "monitor": "nodemon server",
-    "dev": "concurrently \"yarn run monitor\" \"yarn run webpack:dev\""
+    "dev": "concurrently \"npm run monitor\" \"npm run webpack:dev\""
   }
 }
