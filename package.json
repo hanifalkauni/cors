@@ -22,7 +22,8 @@
     "express": "^4.16.4",
     "express-useragent": "^1.0.13",
     "mithril": "^2.0.4",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "@babel/core": "^7.7.2",
@@ -82,6 +83,9 @@
     "server": "NODE_ENV=production node scripts/server.js",
     "start": "npm run build && npm run server",
     "monitor": "nodemon server",
-    "dev": "concurrently \"npm run monitor\" \"npm run webpack:dev\""
-  }
+    "dev": "concurrently \"npm run monitor\" \"npm run webpack:dev\"",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
+  },
+  "snyk": true
 }
